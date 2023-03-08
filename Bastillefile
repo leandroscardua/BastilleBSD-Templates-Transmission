@@ -1,0 +1,8 @@
+ARG transmission=/usr/local/etc/transmission/home/settings.json
+PKG transmission-web transmission-daemon
+SYSRC transmission_enable="YES"
+SYSRC transmission_download_dir="/torrent"
+SERVICE transmission start
+CMD sleep 5
+CMD sed -i '' -e 's/\([[:space:]]*"rpc-whitelist-enabled":[[:space:]]*\)true,/\1false,/' "${transmission}"
+SERVICE transmission reload
