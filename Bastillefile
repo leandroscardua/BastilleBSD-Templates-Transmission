@@ -1,4 +1,6 @@
 ARG transmission=/usr/local/etc/transmission/home/settings.json
+CMD mkdir -p /usr/local/etc/pkg/repos
+CMD echo 'FreeBSD: { url: "pkg+http://pkg.FreeBSD.org/${ABI}/latest" }' > /usr/local/etc/pkg/repos/FreeBSD.conf
 PKG transmission-web transmission-daemon
 SYSRC transmission_enable="YES"
 SYSRC transmission_download_dir="/torrent"
